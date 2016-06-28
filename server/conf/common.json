@@ -1,0 +1,28 @@
+{
+  "redis":{
+    "scheme":"tcp",
+    "host":"localhost",
+    "port":6379,
+    "auth":"",
+    "database":3
+  },
+  "db":{
+
+  },
+  "soa":{
+    "order":"http://100.98.46.184/order",
+    "member":"http://100.98.46.184/member",
+    "base":"http://100.98.46.184/base",
+    "money":"http://100.98.46.184/money",
+    "coupon":"http://100.98.46.184/coupon",
+    "ayi":"http://100.98.46.184/ayi"
+  },
+  "static":{
+    "url":"http://saas.img.ejiazheng.cn/static/webapp",
+    "ayiAvatar":"http://saas.img.ejiazheng.cn",
+    "usrAvatar":"http://website.img.ejiazheng.cn"
+  },
+  "key":{
+
+  }
+}

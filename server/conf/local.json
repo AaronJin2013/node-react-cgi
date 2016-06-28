@@ -1,0 +1,10 @@
+{
+  "soa":{
+    "order":"http://139.196.111.219/order",
+    "member":"http://139.196.111.219/member",
+    "base":"http://139.196.111.219/base",
+    "money":"http://139.196.111.219/money",
+    "coupon":"http://139.196.111.219/coupon",
+    "ayi":"http://139.196.111.219/ayi"
+  }
+}
