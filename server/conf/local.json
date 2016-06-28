@@ -6,5 +6,6 @@
     "money":"http://139.196.111.219/money",
     "coupon":"http://139.196.111.219/coupon",
     "ayi":"http://139.196.111.219/ayi"
-  }
+  },
+  "ENV":"develop"
 }

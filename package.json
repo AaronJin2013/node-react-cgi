@@ -1,10 +1,12 @@
 {
   "name": "Node-CGI-React",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
   "main": "server/index.js",
   "scripts": {
-    "start": "nodemon --local"
+    "start": "nodemon --local",
+    "public": " npm run build && nodemon --product",
+    "build": "webpack --config ./server/webpack/webpack.build.js"
   },
   "author": "YJZ",
   "license": "proprietary",
