@@ -18,7 +18,11 @@
               }
             ]
           }
-        ]
+        ],
+        ["module-alias", [
+              { "src": "./server/middleware", "expose": "middleware" },
+              { "src": "./server/webpack", "expose": "wp-conf" },
+            ]]
       ]
     }
   }

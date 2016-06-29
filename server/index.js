@@ -8,33 +8,19 @@ import session from "express-session";
 import bodyParser from "body-parser";
 import multer from "multer";
 import errorhandler from "errorhandler";
-import request from "request";
 
-var CONFIG=require('./middleware/env');
+var CONFIG=require('middleware/env');
 const app = express();
+import apiRouter from './routes/api';
 import router from './routes';
-require('./middleware/webpack')(app,CONFIG);
-//
-//console.log('request start');
-//
-//request.post({
-//    url: 'http://139.196.111.219/base/config/get_city_list',
-//    json: {
-//        "meta": {
-//            "api_call_source": "9"
-//        },
-//        "data": {
-//            "return_type": 1
-//        }
-//    }
-//}, function(error, response, body){
-//    //console.log(JSON.stringify(body));
-//});
 
+require('middleware/webpack')(app,CONFIG);
 
-app.use('/api/', router);
+app.use('/', router);
+app.use('/api/', apiRouter);
 app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 app.use(bodyParser.json());
 app.use(express.static('public'));
 

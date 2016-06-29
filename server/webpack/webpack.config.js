@@ -53,7 +53,6 @@ var plugins=[
 ];
 module.exports = function(env) {
     var outpath=process.cwd()+'/public';
-    console.log(env);
     if(env=== "public"){
         hotMiddleware={};
         outpath=process.cwd()+'/public';
@@ -91,6 +90,8 @@ module.exports = function(env) {
         plugins:plugins ,
         resolve: {
             extensions: ['', '.jsx', '.js', '.tsx', '.ts'],
+        },
+        alias: {
         }
     };
 
