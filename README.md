@@ -11,3 +11,4 @@
 0.0.10  request middleware
 0.0.11  babelrc add alias
 0.0.12  router api
+0.0.13  redis
