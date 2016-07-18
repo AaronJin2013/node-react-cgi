@@ -23,41 +23,58 @@ client.on("error", function(error) {
 client.on('connect',function() {
 });
 
-export default client;
-//
-//class redisclient{
-//
-//
-//
-//    middleware(...args){
-//        //args[0].json=Object.assign({},{meta: { api_call_source: '9' }},args[0].json);
-//        return args;
-//    }
-//    get(key) {
-//        //args=this.middleware(...args);
-//        //client.get(...args);
-//        return new Promise(function(resolve, reject){
-//            client.get(key, function(err,data){
-//                if(data){
-//                    //console.log(data);
-//                    resolve(data);
-//                }else{
-//                    reject(err);
-//                }
-//            });
-//
-//        });
-//
-//    }
-//
-//    set(...args) {
-//        args=this.middleware(...args);
-//        client.set(...args);
-//    }
-//
-//}
-//
-//export default new redisclient();
+//export default client;
+
+class redisAPI{
+    middleware(params) {
+        params.json = Object.assign({}, {meta: {api_call_source: '9'}}, params.json);
+        return params;
+    }
+
+    promise(params,type,value){
+        return new Promise((resolve, reject) => {
+            switch(type){
+                case 'get':
+                    client.get(params, function(error,body){
+                        if(body){
+                            resolve(body);
+                        }else{
+                            resolve(null);
+                        }
+                        if(error){
+                            reject(error);
+                        }
+                    });
+                    break;
+                case 'set':
+                    client.set(params,JSON.stringify(value), function(error,body){
+                        if(body){
+                            resolve(body);
+                        }else{
+                            resolve(null);
+                        }
+                        if(error){
+                            reject(error);
+                        }
+                    });
+                    break;
+            }
+        });
+    }
+
+    get(params) {
+        //params = this.middleware(params);
+        return this.promise(params,'get');
+    }
+    set(params,value) {
+        //params = this.middleware(params);
+        return this.promise(params,'set',value);
+    }
+
+
+}
+
+export default new redisAPI();
 
 
 //client.auth(RDS_PWD,function(){

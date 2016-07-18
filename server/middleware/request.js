@@ -1,49 +1,62 @@
 import request from "request";
 
-class requestAPI{
-    middleware(...args){
-        args[0].json=Object.assign({},{meta: { api_call_source: '9' }},args[0].json);
-        return args;
+class requestAPI {
+    middleware(params) {
+        params.json = Object.assign({}, {meta: {api_call_source: '9'}}, params.json);
+        return params;
     }
-    post(...args) {
-        args=this.middleware(...args);
-        request.post(...args);
+
+    promise(params,fun){
+        return new Promise((resolve, reject) => {
+            fun(params, function (error, response, body) {
+                if (error) {
+                    reject(error);
+                }
+                resolve(body);
+            });
+        });
     }
-    get(...args) {
-        args=this.middleware(...args);
-        request.get(...args);
+    
+    post(params) {
+        params = this.middleware(params);
+        return this.promise(params,request.post);
     }
-    put(...args) {
-        args=this.middleware(...args);
-        request.get(...args);
+
+    get(params) {
+        args=this.middleware(params);
+        return this.promise(params,request.get);
     }
-    patch(...args) {
-        args=this.middleware(...args);
-        request.get(...args);
+    put(params) {
+        args=this.middleware(params);
+        return this.promise(params,request.put);
     }
-    del(...args) {
-        args=this.middleware(...args);
-        request.get(...args);
+    patch(params) {
+        args=this.middleware(params);
+        return this.promise(params,request.patch);
     }
-    delete(...args) {
-        args=this.middleware(...args);
-        request.get(...args);
+    del(params) {
+        args=this.middleware(params);
+        return this.promise(params,request.del);
     }
-    head(...args) {
-        request.get(...args);
+    delete(params) {
+        args=this.middleware(params);
+        return this.promise(params,request.delete);
     }
-    jar(...args) {
-        request.get(...args);
-    }
-    cookie(...args) {
-        request.get(...args);
-    }
-    defaults(...args) {
-        request.get(...args);
-    }
-    forever(...args) {
-        request.get(...args);
-    }
+    //head(params) {
+    //    request.get(params);
+    //}
+    //jar(params) {
+    //    request.get(params);
+    //}
+    //cookie(params) {
+    //    request.get(params);
+    //}
+    //defaults(params) {
+    //    request.get(params);
+    //}
+    //forever(params) {
+    //    request.get(params);
+    //}
 }
 
 //export default requestAPI;
