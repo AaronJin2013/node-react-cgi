@@ -16,7 +16,7 @@ module.exports = function(app,CONFIG) {
 
         var hotMiddleware = require('webpack-hot-middleware')(compiler, {
             reload: true,
-            //log: console.log,
+            //log: global.logger.log,
             path: '/__webpack_hmr'
         });
         app.use(devMiddleware);

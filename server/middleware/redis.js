@@ -9,16 +9,16 @@ var redis = require('redis'),
     client = redis.createClient(RDS_PORT,RDS_HOST,RDS_OPTS);
 
 client.on('ready',function(res){
-    console.log('ready');
+    logger.log('ready');
 });
 
 client.on('end',function(err){
-    console.log('end');
+    logger.log('end');
 });
 
 
 client.on("error", function(error) {
-    console.log(error);
+    logger.log(error);
 });
 client.on('connect',function() {
 });
@@ -78,15 +78,15 @@ export default new redisAPI();
 
 
 //client.auth(RDS_PWD,function(){
-//    console.log('通过认证');
+//    global.logger.log('通过认证');
 //});
 //
 //client.on('connect',function(){
 //    client.set('author', 'Wilson',redis.print);
 //    client.get('author', function(err,res){
-//        console.log(res);
+//        global.logger.log(res);
 //    });
-//    console.log('connect');
+//    global.logger.log('connect');
 //});
 //
 //client.on('connect',function(){
@@ -96,10 +96,10 @@ export default new redisAPI();
 //    client.hgetall("short", function(err,res){
 //        if(err)
 //        {
-//            console.log('Error:'+ err);
+//            global.logger.log('Error:'+ err);
 //            return;
 //        }
-//        console.dir(res);
+//        global.logger.dir(res);
 //    });
 //});
 //client.on('connect',function(){
@@ -112,9 +112,9 @@ export default new redisAPI();
 //        .sismember(key,'C#')
 //        .smembers(key)
 //        .exec(function (err, replies) {
-//            console.log("MULTI got " + replies.length + " replies");
+//            global.logger.log("MULTI got " + replies.length + " replies");
 //            replies.forEach(function (reply, index) {
-//                console.log("Reply " + index + ": " + reply.toString());
+//                global.logger.log("Reply " + index + ": " + reply.toString());
 //            });
 //            client.quit();
 //        });

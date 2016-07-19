@@ -3,7 +3,7 @@ const router = Router();
 
 
 router.get('/test', function(req, res, next){
-    console.log('test');
+    logger.log('test');
     res.send('test');
 });
 

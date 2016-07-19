@@ -2,7 +2,7 @@ import request from "middleware/request";
 
 import redis from 'middleware/redis';
 
-class cacheAPI{
+class urlAPI{
 
     async get(key,params){
 
@@ -15,10 +15,10 @@ class cacheAPI{
                 redis.set(key,result);
             }
         } catch (e) {
-            console.log(e);
+            logger.log(e);
         }
         return(result);
     }
 }
 
-export default new cacheAPI();
+export default new urlAPI();
