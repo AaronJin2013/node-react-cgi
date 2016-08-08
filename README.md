@@ -15,3 +15,4 @@
 0.0.14  async await
 0.0.15  async await cache
 0.0.16  logger use tracer
+0.0.17  proxy
