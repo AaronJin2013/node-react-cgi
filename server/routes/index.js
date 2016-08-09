@@ -4,7 +4,7 @@ import {Router} from 'express';
 const router = Router();
 
 router.get("/", function (req, res) {
-    res.render('index', {
+    res.render('wap', {
         title: 'index'
     });
 });

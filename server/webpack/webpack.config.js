@@ -9,11 +9,12 @@ var hotMiddleware={
     hotmid:'webpack-hot-middleware/client'
 };
 var extractSASS = new ExtractTextPlugin('[name].css');
+var extractLESS = new ExtractTextPlugin('lib.css');
 var loaders=[
     {
-        test: /\.(ts|tsx)?$/,
+        test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
-        loaders: ['babel-loader', 'ts-loader']
+        loaders: ['babel-loader']
     },{
         test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
         loader: 'file'
@@ -29,7 +30,15 @@ var loaders=[
         loader: extractSASS.extract("style-loader",[
             "css-loader",
             "autoprefixer-loader?browsers=last 2 version",
-            "sass-loader?outputStyle=expanded&includePaths[]=" + path.resolve(__dirname, './src/')
+            "sass-loader?outputStyle=expanded&includePaths[]=" + path.resolve(__dirname, './src/'),
+        ].join("!"))
+    },
+    {
+        test: /\.less$/,
+        loader: extractLESS.extract("style-loader",[
+            "css-loader",
+            "autoprefixer-loader?browsers=last 2 version",
+            'less-loader'
         ].join("!"))
     }
 ];
@@ -37,6 +46,7 @@ var plugins=[
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     extractSASS,
+    extractLESS,
 
     new webpack.optimize.CommonsChunkPlugin({
         name:'vendor',

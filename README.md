@@ -16,3 +16,7 @@
 0.0.15  async await cache
 0.0.16  logger use tracer
 0.0.17  proxy
+
+0.1.1   react npm install
+0.1.2   elemental frame
+0.1.3   background-img fileloader

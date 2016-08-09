@@ -21,7 +21,7 @@ require('middleware/webpack')(app,CONFIG);
 //app.use('/api/', apiRouter);
 
 
-app.use('/new/', router);
+app.use('/wap/', router);
 app.use('/api/', apiRouter);
 
 app.use('/', proxy({target: 'http://wap.yunjiazheng.com/', changeOrigin: true}));
