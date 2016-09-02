@@ -1,3 +1,6 @@
 {
-  "ENV":"develop"
+  "ENV":"develop",
+  "PROXY":{
+    "wap":"http://beta.wap.ejiazheng.cn/"
+  }
 }

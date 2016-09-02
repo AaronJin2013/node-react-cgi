@@ -1,3 +1,6 @@
 {
-  "ENV":"public"
+  "ENV":"public",
+  "PROXY":{
+    "wap":"http://gamma.wap.ejiazheng.cn/"
+  }
 }

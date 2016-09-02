@@ -20,3 +20,6 @@
 0.1.1   react npm install
 0.1.2   elemental frame
 0.1.3   background-img fileloader
+
+0.2.1   pm2 replace nodemon
+pm2 start --interpreter babel-node server/index.js  -x -- --local

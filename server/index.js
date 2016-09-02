@@ -13,18 +13,16 @@ import proxy from'http-proxy-middleware';
 var CONFIG=require('middleware/env');
 const app = express();
 import apiRouter from './routes/api';
-import router from './routes';
+import wapRouter from './routes/wap';
 
 require('middleware/webpack')(app,CONFIG);
-//
-//app.use('/', router);
-//app.use('/api/', apiRouter);
 
 
-app.use('/wap/', router);
+app.use('/', wapRouter);
 app.use('/api/', apiRouter);
 
-app.use('/', proxy({target: 'http://wap.yunjiazheng.com/', changeOrigin: true}));
+app.use(proxy({target: 'http://wap.yunjiazheng.com/', changeOrigin: true}));
+
 
 app.set('views', __dirname + '/views');
 app.engine('html', require('ejs').renderFile);
@@ -32,7 +30,7 @@ app.set('view engine', 'html');
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || CONFIG.PORT);
 http.createServer(app).listen(app.get('port'), (err) => {
     if(err) logger.log('Error', err);
     logger.log("Express server listening on port " + app.get('port'));

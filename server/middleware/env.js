@@ -7,7 +7,6 @@ var fs = require('fs');
 
 var config={};
 global.logger = require('tracer').colorConsole();
-
 switch (process.argv[2]){
     case '--beta':
         config=Object.assign({}, common,beta);

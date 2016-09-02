@@ -1,4 +1,4 @@
-import './scss/index.scss';;
+import './scss/index.scss';
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -6,5 +6,3 @@ import * as ReactDOM from 'react-dom';
 import { Boot } from './js/boot.jsx';
 
 ReactDOM.render(<Boot />, document.getElementById('app'));
-
-console.log('wap init567123');

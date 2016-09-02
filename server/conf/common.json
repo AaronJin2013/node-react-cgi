@@ -25,5 +25,9 @@
   "key":{
 
   },
+  "PORT":80,
+  "PROXY":{
+    "wap":"http://wap.yunjiazheng.com/"
+  },
   "ENV":"public"
 }

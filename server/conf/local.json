@@ -7,5 +7,9 @@
     "coupon":"http://139.196.111.219/coupon",
     "ayi":"http://139.196.111.219/ayi"
   },
+  "PORT":8080,
+  "PROXY":{
+    "wap":"http://webapp.ejiazheng.loc/"
+  },
   "ENV":"develop"
 }

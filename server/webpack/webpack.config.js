@@ -4,6 +4,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require("path");
 var entry = require("./webpack.entry");
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var hotMiddleware={
     hotmid:'webpack-hot-middleware/client'
@@ -17,7 +18,7 @@ var loaders=[
         loaders: ['babel-loader']
     },{
         test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
-        loader: 'file'
+        loader: 'file?name=img/[name].[ext]'
     },{
         test: /\.html$/,
         loader: 'raw'
@@ -60,6 +61,10 @@ var plugins=[
             return false;
         }
     }),
+    //new HtmlWebpackPlugin({  // Also generate a test.html
+    //    filename: '../../server/views/wap/index.html',
+    //    template: './server/views/template/index.html'
+    //})
 ];
 module.exports = function(env) {
     var outpath=process.cwd()+'/public';
